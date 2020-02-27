@@ -8,7 +8,6 @@ yarn.lock
 
 # Package related
 package-lock.json
-package.json
 
 # Editor directories and files
 .idea
