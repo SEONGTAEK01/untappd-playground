@@ -12,21 +12,25 @@
              class="input"
              type="text"
              placeholder="Untappd Name"/>
-      <button class="button is-info" @click="get_info">
+      <button class="button is-info" v-on:click="get_info">
         Let's get drunk!
       </button>
     </header>
     <ul>
       <template v-for="item in beers">
-        <h3>{{ item.beer.beer_name }}({{item.beer.beer_style}})(Rate:{{item.rating_score}})</h3>
+        <h3>{{ item.beer.beer_name }} ({{item.beer.beer_style}}) (Rate:{{item.rating_score}})</h3>
       </template>
     </ul>
   </div>
 </template>
 
 <script>
+  import {bus} from '../main'
+  import Graph from "./Graph";
+
   export default {
     name: 'HelloWorld',
+    components: {Graph},
     data() {
       return {
         beers: '',
@@ -38,12 +42,11 @@
         sort_name: '',
         each_line: '',
         final_info: '',
+        beer_type: [],
       }
     },
     methods: {
       get_info: function () {
-        console.log(this.user_id);
-
         this.$axios.get(
           'https://api.untappd.com/v4/user/beers/' + this.user_id + '?' +
           this.client_id + '&' + this.client_secret + '&' + this.limit + '&' + this.sort
@@ -52,10 +55,17 @@
           this.beers = this.data_obj.beers.items;
           this.sort_name = this.data_obj.sort_name;
 
-          console.log(this.data_obj.beers.items);
+          for (let i = 0; i < this.beers.length; i++) {
+            this.beer_type.push(this.beers[i].beer.beer_style)
+          }
+
+          let count_beer_type = {};
+          this.beer_type.forEach(function (x) {
+            count_beer_type[x] = (count_beer_type[x] || 0) + 1;
+          });
+          bus.$emit('updateDonut', count_beer_type);
         });
       }
-
     }
   }
 </script>

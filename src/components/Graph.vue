@@ -1,26 +1,29 @@
 <template>
-  <div>
-    <apexchart width="500" type="heatmap" :options="chartOptions" :series="series"></apexchart>
-  </div>
+  <apexchart width="700" height="500" type="donut" :options="chartOptions" :series="series"></apexchart>
 </template>
 <script>
+  import {bus} from '../main';
+
   export default {
     name: "Graph",
+    legend: {
+      horizontalAlign: 'center',
+    },
     data: function () {
       return {
         chartOptions: {
-          chart: {
-            id: 'vuechart-example'
-          },
-          xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-          }
+          labels: []
         },
-        series: [{
-          name: 'series-1',
-          data: [30, 40, 45, 50, 49, 60, 70, 91]
-        }]
+        series: [],
       }
+    },
+    created() {
+      bus.$on('updateDonut', (data) => {
+        this.chartOptions = {
+          labels: Object.keys(data)
+        };
+        this.series = Object.values(data);
+      })
     },
   };
 </script>
