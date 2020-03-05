@@ -37,7 +37,7 @@
         client_id: 'client_id=C95B72B6E5FD605C8A905F905649A5D77F0955BF',
         client_secret: 'client_secret=82EFFF80693DE99820A19DC94CDA2BDF553E1808',
         user_id: '',
-        limit: 'limit=20',
+        limit: 'limit=100',
         sort: 'sort=highest_rated_you',
         sort_name: '',
         each_line: '',
