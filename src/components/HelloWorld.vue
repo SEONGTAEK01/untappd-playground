@@ -9,6 +9,7 @@
         <h1>Input User ID</h1>
       </div>
       <input v-model="user_id"
+             @keyup.enter="get_info"
              class="input"
              type="text"
              placeholder="Untappd Name"/>
