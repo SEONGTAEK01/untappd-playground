@@ -1,5 +1,6 @@
 <template>
-  <apexchart width="700" height="500" type="donut" :options="chartOptions" :series="series"></apexchart>
+  <apexchart width="900" height="500" style="display: flex;
+    justify-content: center;" type="donut" :options="chartOptions" :series="series"></apexchart>
 </template>
 <script>
   import {bus} from '../main';
