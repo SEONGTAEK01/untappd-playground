@@ -12,7 +12,7 @@
              @keyup.enter="get_info"
              class="input"
              type="text"
-             placeholder="Untappd Name"/>
+             placeholder="Untappd ID"/>
       <button class="button is-info" v-on:click="get_info">
         Let's get drunk!
       </button>
@@ -21,6 +21,10 @@
       <template v-for="item in beers">
         <h3>{{ item.beer.beer_name }} ({{item.beer.beer_style}}) (Rate:{{item.rating_score}})</h3>
       </template>
+      <select v-model="selected">
+        <option value="Major">Major</option>
+        <option value="Minor">Minor</option>
+      </select>
     </ul>
   </div>
 </template>
@@ -44,6 +48,7 @@
         each_line: '',
         final_info: '',
         beer_type: [],
+        selected: 'Major',
       }
     },
     methods: {
@@ -57,9 +62,15 @@
           this.sort_name = this.data_obj.sort_name;
 
           for (let i = 0; i < this.beers.length; i++) {
-            this.beer_type.push(this.beers[i].beer.beer_style)
+            let beer_style = this.beers[i].beer.beer_style;
+            if (this.selected === "Major") {
+              beer_style = beer_style.split('-')[0]
+            }
+            this.beer_type.push(beer_style);
           }
 
+          // FIXME: total amount of beers
+          // FIXME_2: dynamic major, minor function
           let count_beer_type = {};
           this.beer_type.forEach(function (x) {
             count_beer_type[x] = (count_beer_type[x] || 0) + 1;
