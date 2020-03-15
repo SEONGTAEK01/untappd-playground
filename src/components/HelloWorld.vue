@@ -42,12 +42,11 @@
         client_id: 'client_id=C95B72B6E5FD605C8A905F905649A5D77F0955BF',
         client_secret: 'client_secret=82EFFF80693DE99820A19DC94CDA2BDF553E1808',
         user_id: '',
-        limit: 'limit=100',
+        limit: 'limit=50',
         sort: 'sort=highest_rated_you',
         sort_name: '',
         each_line: '',
         final_info: '',
-        beer_type: [],
         selected: 'Major',
       }
     },
@@ -61,18 +60,19 @@
           this.beers = this.data_obj.beers.items;
           this.sort_name = this.data_obj.sort_name;
 
+          let beer_type = [];
           for (let i = 0; i < this.beers.length; i++) {
             let beer_style = this.beers[i].beer.beer_style;
             if (this.selected === "Major") {
               beer_style = beer_style.split('-')[0]
             }
-            this.beer_type.push(beer_style);
+            beer_type.push(beer_style);
           }
 
           // FIXME: total amount of beers
           // FIXME_2: dynamic major, minor function
           let count_beer_type = {};
-          this.beer_type.forEach(function (x) {
+          beer_type.forEach(function (x) {
             count_beer_type[x] = (count_beer_type[x] || 0) + 1;
           });
           bus.$emit('updateDonut', count_beer_type);
