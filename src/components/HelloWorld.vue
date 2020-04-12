@@ -21,7 +21,7 @@
       <template v-for="item in beers">
         <h3>{{ item.beer.beer_name }} ({{item.beer.beer_style}}) (Rate:{{item.rating_score}})</h3>
       </template>
-      <select v-model="selected">
+      <select v-model="classify" v-on:change="get_info">
         <option value="Major">Major</option>
         <option value="Minor">Minor</option>
       </select>
@@ -47,7 +47,7 @@
         sort_name: '',
         each_line: '',
         final_info: '',
-        selected: 'Major',
+        classify: 'Major',
       }
     },
     methods: {
@@ -63,7 +63,7 @@
           let beer_type = [];
           for (let i = 0; i < this.beers.length; i++) {
             let beer_style = this.beers[i].beer.beer_style;
-            if (this.selected === "Major") {
+            if (this.classify === "Major") {
               beer_style = beer_style.split('-')[0]
             }
             beer_type.push(beer_style);
@@ -78,7 +78,7 @@
           bus.$emit('updateDonut', count_beer_type);
         });
       }
-    }
+    },
   }
 </script>
 
