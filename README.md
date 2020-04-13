@@ -1,12 +1,12 @@
 # untappd-playground
-Let's do sth with untappd API
-=======
-# vue-study-webpack
+Let's play with untappd API!
 
-> A Vue.js project
+## Introduction
+This is the first project I'm building with javascript and vue.js.
+As a craft-beer big lover, the project would be displaying beer-related data and learning javascript and vue.js for fun based on API provided by untappd :)
+Cheers.
 
 ## Build Setup
-
 ``` bash
 # install dependencies
 npm install
