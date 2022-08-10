@@ -1,10 +1,12 @@
-# untappd-playground
-Let's play with untappd API!
+# Untappd-playground
+Let's play with Untappd API!
 
 ## Introduction
 This is the first project I'm building with javascript and vue.js.
-As a craft-beer big lover, the project would be displaying beer-related data and learning javascript and vue.js for fun based on API provided by untappd :)
+As a craft-beer big lover, the project would be displaying beer-related data and learning javascript and vue.js for fun based on API provided by Untappd :)
 Cheers.
+
+![readme_intro](https://user-images.githubusercontent.com/33278794/183788572-43b22c1d-61e1-4b9a-a8e2-351fcfa31892.gif)
 
 ## Build Setup
 ``` bash
