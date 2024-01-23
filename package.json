@@ -5,7 +5,7 @@
   "author": "seongtaek.hong <seongtaek.hong@looxidlabs.com>",
   "private": false,
   "scripts": {
-    "dev": "webpack-dev-server --host 0.0.0.0 --port 7937 --disableHostCheck true --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --host 0.0.0.0 --port 8080 --disableHostCheck true --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js"
   },
